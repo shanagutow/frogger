@@ -70,7 +70,7 @@ var Engine = (function(global) {
         lastTime = Date.now();
         main();
     }
-    init();
+    //init();
 
     /* This function is called by main (our game loop) and itself calls all
      * of the functions which may need to update entity's data. Based on how

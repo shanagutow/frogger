@@ -75,8 +75,9 @@ Player.prototype.update = function() {
 Player.prototype.render = function() {   // user added
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     this.x = 200;
-    this.y = 400;
-    //console.log(this.x);
+    this.y = 410;
+    console.log("works");
+
 };
 
 Player.prototype.handleInput = function() {

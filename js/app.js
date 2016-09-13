@@ -1,16 +1,30 @@
 //var buggy1 = new Enemy(1);
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x,y){
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    //this = Object.create(Enemy.prototype);
-    //this.loc = loc;
-    //return this;
+
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+    console.log("new enemy");
     this.sprite = 'images/enemy-bug.png';
-    console.log("h");
-};
+    this.x = x;
+    this.y = y;
+    console.log("enemy ");
+    console.log(this.x);
+    console.log(this.y);
+    console.log("end enemy");
+
+    Enemy.prototype.render = function() {
+    console.log("start render");
+    console.log(this.x);
+    console.log(this.y);
+    console.log(this.sprite);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    console.log("end render");
+    }
+
+}
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -22,7 +36,7 @@ Enemy.prototype.update = function(dt) {
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function(x,y) {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -55,15 +69,18 @@ var Player = function() {
 };
 
 Player.prototype.update = function() {
-    console.log("update test");
+    //console.log("update test");
 };
 
 Player.prototype.render = function() {   // user added
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    this.x = 200;
+    this.y = 400;
+    //console.log(this.x);
 };
 
 Player.prototype.handleInput = function() {
-    console.log("handleInput test");
+    //console.log("handleInput test");
 };
 
 // Now instantiate your objects.

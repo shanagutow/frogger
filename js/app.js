@@ -7,6 +7,7 @@ var Enemy = function(x,y){
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     console.log("new enemy");
+    this.loc = loc;
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
@@ -32,12 +33,14 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.loc++;
+
+    console.log("enemyProUp test");
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function(x,y) {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    Enemy.call(this, loc);
 };
 
 // Now write your own player class
@@ -72,16 +75,30 @@ Player.prototype.update = function() {
     //console.log("update test");
 };
 
-Player.prototype.render = function() {   // user added
+Player.prototype.render = function(x,y) {   // user added
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     this.x = 200;
     this.y = 410;
-    console.log("works");
+
 
 };
 
-Player.prototype.handleInput = function() {
-    //console.log("handleInput test");
+Player.prototype.handleInput = function(key) {
+    switch(key){
+            case 'left' :
+              this.x = this.x - 83;
+              break;
+            case 'right' :
+              this.x = this.x + 83;
+              break;
+            case 'up' :
+              this.y = this.y - 83;
+              break;
+            case 'down' :
+              this.y = this.y + 83;
+              break;
+        }
+    console.log("handleInput test");
 };
 
 // Now instantiate your objects.

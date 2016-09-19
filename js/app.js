@@ -69,16 +69,18 @@ person2.sayHello(); // logs "Hello, I'm Bob"
 */
 var Player = function() {
     this.sprite = 'images/char-pink-girl.png';
+    this.x = 200;
+    this.y = 410;
 };
 
 Player.prototype.update = function() {
+    this.x = this.x
     //console.log("update test");
 };
 
 Player.prototype.render = function(x,y) {   // user added
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    this.x = 200;
-    this.y = 410;
+
 
 
 };

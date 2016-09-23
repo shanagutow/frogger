@@ -9,7 +9,7 @@ var Enemy = function(x,y,speed){
     this.x = x;
     this.y = y;
     this.speed = speed;
-
+    this.speed = Math.random() * (240 - 60) + 60;
 
 
 }
@@ -63,9 +63,9 @@ Player.prototype.render = function(x,y) {   // user added
 Player.prototype.handleInput = function(key) {
     switch(key){
             case 'left' :
-              this.x = this.x - 95;
-               // if x <= 0;
-
+              if (this.x >= 95) {
+                this.x = this.x - 95;
+            };
               break;
             case 'right' :
               this.x = this.x + 95;

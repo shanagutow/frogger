@@ -1,28 +1,17 @@
-//var buggy1 = new Enemy(1);
 // Enemies our player must avoid
-var Enemy = function(x,y){
+var Enemy = function(){
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    console.log("new enemy");
-    this.loc = loc;
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-    console.log("enemy ");
-    console.log(this.x);
-    console.log(this.y);
-    console.log("end enemy");
+    this.speed = speed;
 
     Enemy.prototype.render = function() {
-    console.log("start render");
-    console.log(this.x);
-    console.log(this.y);
-    console.log(this.sprite);
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    console.log("end render");
     }
 
 }
@@ -33,40 +22,27 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+     if (this.x > 500){ // If enemy is off-canvas, start over at -80
+        this.x = -80;
+        this.y = enemyRows[Math.round(Math.random()*(enemyRows.length-1))];
+        //this.y = 220;
+        this.speed = Math.random() * (240 - 60) + 60;
+    } else {
+       this.x = this.x += (this.speed * dt);
+    }
 
-    console.log("enemyProUp test");
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function(x,y) {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    Enemy.call(this, loc);
-};
+ };
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-//function player(){
-  //  update()
-  //  render()
-  //  handleInput()
-//}
-/*
-var Person = function (firstName) {
-  this.firstName = firstName;
-};
 
-Person.prototype.sayHello = function() {
-  console.log("Hello, I'm " + this.firstName);
-};
 
-var person1 = new Person("Alice");
-var person2 = new Person("Bob");
-
-// call the Person sayHello method.
-person1.sayHello(); // logs "Hello, I'm Alice"
-person2.sayHello(); // logs "Hello, I'm Bob"
-*/
 var Player = function() {
     this.sprite = 'images/char-pink-girl.png';
     this.x = 200;
@@ -80,9 +56,6 @@ Player.prototype.update = function() {
 
 Player.prototype.render = function(x,y) {   // user added
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
-
-
 };
 
 Player.prototype.handleInput = function(key) {
@@ -106,7 +79,10 @@ Player.prototype.handleInput = function(key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var allEnemies = [];
+var allEnemies = [buggy1, buggy2, buggy3];
+var buggy1 = new Enemy(50, 200);
+var buggy2 = new Enemy(50, 300);
+var buggy3 = new Enemy(55, 250);
 var player = new Player();
 
 

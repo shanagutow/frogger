@@ -64,6 +64,8 @@ Player.prototype.handleInput = function(key) {
     switch(key){
             case 'left' :
               this.x = this.x - 95;
+               // if x <= 0;
+
               break;
             case 'right' :
               this.x = this.x + 95;
@@ -81,10 +83,11 @@ Player.prototype.handleInput = function(key) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var allEnemies = [buggy1, buggy2, buggy3];
+
 var buggy1 = new Enemy(50, 200);
 var buggy2 = new Enemy(50, 300);
 var buggy3 = new Enemy(55, 250);
+var allEnemies = [buggy1, buggy2, buggy3];
 var player = new Player();
 
 

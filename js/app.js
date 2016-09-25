@@ -90,9 +90,9 @@ Player.prototype.handleInput = function(key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var buggy1 = new Enemy(50, 200);
-var buggy2 = new Enemy(50, 300);
-var buggy3 = new Enemy(55, 250);
+var buggy1 = new Enemy(50, 150);
+var buggy2 = new Enemy(50, 65);
+var buggy3 = new Enemy(50, 230);
 var allEnemies = [buggy1, buggy2, buggy3];
 var player = new Player();
 

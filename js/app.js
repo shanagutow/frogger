@@ -73,10 +73,14 @@ Player.prototype.handleInput = function(key) {
               }
               break;
             case 'up' :
-              this.y = this.y - 83;
+                if (this.y >= 50){
+                  this.y = this.y - 83;
+                }
               break;
             case 'down' :
-              this.y = this.y + 83;
+                if (this.y <= 400){
+                  this.y = this.y + 83;
+                }
               break;
         }
     console.log("handleInput test");

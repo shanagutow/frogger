@@ -20,17 +20,19 @@ Enemy.prototype.render = function() {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
+enemyRows = [65, 150, 230];
 Enemy.prototype.update = function(dt, speed) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
      if (this.x > 500){ // If enemy is off-canvas, start over at -80
-        this.x = -80;
+        console.log("Hello");
+        this.x = 0;
         this.y = enemyRows[Math.round(Math.random()*(enemyRows.length-1))];
         //this.y = 220;
         this.speed = Math.random() * (240 - 60) + 60;
     } else {
-       this.x = this.x += (this.speed * dt);
+       this.x += (this.speed * dt);
     }
 
 };
@@ -90,9 +92,9 @@ Player.prototype.handleInput = function(key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var buggy1 = new Enemy(50, 150);
-var buggy2 = new Enemy(50, 65);
-var buggy3 = new Enemy(50, 230);
+var buggy1 = new Enemy(0, 150);
+var buggy2 = new Enemy(0, 65);
+var buggy3 = new Enemy(0, 230);
 var allEnemies = [buggy1, buggy2, buggy3];
 var player = new Player();
 

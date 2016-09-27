@@ -68,6 +68,9 @@ Player.prototype.handleInput = function(key) {
               if (this.x >= 95) {
                 this.x = this.x - 95;
             };
+              if (this.x = buggy1) {
+                return; // change return to somthing else
+              }
               break;
             case 'right' :
               if (this.x <= 375) {

@@ -34,6 +34,16 @@ Enemy.prototype.update = function(dt, speed) {
     } else {
        this.x += (this.speed * dt);
     }
+    rect1 = {x: this.x, y: this.y, width: this.width, height: this.height};
+    rect2 = {x: player.x, y: player.y, width: player.width, height: player.height};
+    console.log("2");
+    if (rect1.x < rect2.x + rect2.width &&
+        rect1.x + rect1.width > rect2.x &&
+        rect1.y < rect2.y + rect2.height &&
+        rect1.height + rect1.y > rect2.y) {
+            console.log('rect test');
+}
+
 
 };
 
@@ -68,9 +78,6 @@ Player.prototype.handleInput = function(key) {
               if (this.x >= 95) {
                 this.x = this.x - 95;
             };
-              if (this.x = buggy1) {
-                return; // change return to somthing else
-              }
               break;
             case 'right' :
               if (this.x <= 375) {

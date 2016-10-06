@@ -14,10 +14,6 @@ var Enemy = function(x,y,speed){
 
 }
 
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
-
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 enemyRows = [65, 150, 230];
@@ -26,7 +22,6 @@ Enemy.prototype.update = function(dt, speed) {
     // which will ensure the game runs at the same speed for
     // all computers.
      if (this.x > 500){ // If enemy is off-canvas, start over at -80
-        console.log("Hello");
         this.x = 0;
         this.y = enemyRows[Math.round(Math.random()*(enemyRows.length-1))];
         //this.y = 220;
@@ -34,18 +29,24 @@ Enemy.prototype.update = function(dt, speed) {
     } else {
        this.x += (this.speed * dt);
     }
+
+
+};
+
+Enemy.prototype.checkCollision = function() {
+
     rect1 = {x: this.x, y: this.y, width: this.width, height: this.height};
     rect2 = {x: player.x, y: player.y, width: player.width, height: player.height};
     console.log("2");
+
     if (rect1.x < rect2.x + rect2.width &&
         rect1.x + rect1.width > rect2.x &&
         rect1.y < rect2.y + rect2.height &&
         rect1.height + rect1.y > rect2.y) {
             console.log('rect test');
-}
-
-
+    }
 };
+
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function(x,y) {

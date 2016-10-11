@@ -30,11 +30,12 @@ Enemy.prototype.update = function(dt, speed) {
        this.x += (this.speed * dt);
     }
 
-
+Enemy.prototype.checkCollision();
 };
 
-Enemy.prototype.checkCollision = function() {
 
+Enemy.prototype.checkCollision = function() {
+    console.log(player.y);
     rect1 = {x: this.x, y: this.y, width: this.width, height: this.height};
     rect2 = {x: player.x, y: player.y, width: player.width, height: player.height};
     console.log("2");

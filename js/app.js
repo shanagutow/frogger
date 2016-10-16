@@ -32,14 +32,10 @@ Enemy.prototype.update = function(dt, speed) {
     enemyBox = {x: this.x, y: this.y};
     playerBox = {x: player.x, y: player.y};
     console.log(enemyBox);
-    if (enemyBox.x < (playerBox.x + 50)) //&&
-       // enemyBox.x + enemyBox.width > playerBox.x &&
-       // enemyBox.y < playerBox.y + playerBox.height &&
-        //enemyBox.height + enemyBox.y > playerBox.y)
+    if ((enemyBox.x < (playerBox.x + 50)) && ((enemyBox.x + 75) > playerBox.x) && (enemyBox.y < (playerBox.y + 63)) && ((77 + enemyBox.y) > playerBox.y))
          {
            console.log('rect test');
     }
-//Enemy.prototype.checkCollision();
 };
 
 

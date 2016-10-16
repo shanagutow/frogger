@@ -29,23 +29,32 @@ Enemy.prototype.update = function(dt, speed) {
     } else {
        this.x += (this.speed * dt);
     }
-
-Enemy.prototype.checkCollision();
+    enemyBox = {x: this.x, y: this.y};
+    playerBox = {x: player.x, y: player.y};
+    console.log(enemyBox);
+    if (enemyBox.x < (playerBox.x + 50)) //&&
+       // enemyBox.x + enemyBox.width > playerBox.x &&
+       // enemyBox.y < playerBox.y + playerBox.height &&
+        //enemyBox.height + enemyBox.y > playerBox.y)
+         {
+           console.log('rect test');
+    }
+//Enemy.prototype.checkCollision();
 };
 
 
-Enemy.prototype.checkCollision = function() {
-    console.log(player.y);
-    rect1 = {x: this.x, y: this.y, width: this.width, height: this.height};
-    rect2 = {x: player.x, y: player.y, width: player.width, height: player.height};
-    console.log("2");
-
-    if (rect1.x < rect2.x + rect2.width &&
-        rect1.x + rect1.width > rect2.x &&
-        rect1.y < rect2.y + rect2.height &&
-        rect1.height + rect1.y > rect2.y) {
-            console.log('rect test');
-    }
+Enemy.prototype.checkCollision = function(x,y) {
+    //enemyBox = {x: this.x, y: this.y, width: this.width, height: this.height};
+    //playerBox = {x: player.x, y: player.y, width: player.width, height: player.height};
+    console.log(this.x);
+    /*console.log(this.x , "enemyBox");
+    if (enemyBox.x < playerBox.x + playerBox.width) //&&
+       // enemyBox.x + enemyBox.width > playerBox.x &&
+       // enemyBox.y < playerBox.y + playerBox.height &&
+        //enemyBox.height + enemyBox.y > playerBox.y)
+         {
+           console.log('rect test');
+    }*/
 };
 
 

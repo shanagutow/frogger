@@ -34,7 +34,8 @@ Enemy.prototype.update = function(dt, speed) {
     console.log(enemyBox);
     if ((enemyBox.x < (playerBox.x + 50)) && ((enemyBox.x + 75) > playerBox.x) && (enemyBox.y < (playerBox.y + 63)) && ((77 + enemyBox.y) > playerBox.y))
          {
-           console.log('rect test');
+           // this.x = 200;
+    //this.y = 410;reset;
     }
 };
 
@@ -70,13 +71,14 @@ var Player = function() {
     this.y = 410;
 };
 
-Player.prototype.update = function() {
-    this.x = this.x
-    //console.log("update test");
+Player.prototype.update = function(x,y) {
+    this.x = this.x;
 };
 
 Player.prototype.render = function(x,y) {   // user added
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    console.log(this.y, this.x);
+
 };
 
 Player.prototype.handleInput = function(key) {
@@ -89,19 +91,22 @@ Player.prototype.handleInput = function(key) {
             case 'right' :
               if (this.x <= 375) {
                 this.x = this.x + 95;
-              }
+              };
               break;
             case 'up' :
                 if (this.y >= 50){
                   this.y = this.y - 83;
+                } if (this.y <= -5){
+                  reset();
                 }
+
               break;
             case 'down' :
                 if (this.y <= 400){
                   this.y = this.y + 83;
-                }
+                };
               break;
-        }
+        };
     console.log("handleInput test");
 };
 

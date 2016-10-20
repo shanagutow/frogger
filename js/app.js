@@ -36,7 +36,7 @@ Enemy.prototype.update = function(dt, speed) {
     if ((enemyBox.x < (playerBox.x + 50)) && ((enemyBox.x + 75) > playerBox.x) && (enemyBox.y < (playerBox.y + 63)) && ((77 + enemyBox.y) > playerBox.y))
          {
           console.log("reset");
-        Player.prototype.reset();
+        player.reset();
     };
 };
 

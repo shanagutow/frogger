@@ -36,7 +36,8 @@ Enemy.prototype.update = function(dt, speed) {
     if ((enemyBox.x < (playerBox.x + 50)) && ((enemyBox.x + 75) > playerBox.x) && (enemyBox.y < (playerBox.y + 63)) && ((77 + enemyBox.y) > playerBox.y))
          {
           console.log("reset");
-        player.reset();
+      setTimeout(lostMessage, 500)
+      setTimeout(player.reset(), 10000);
     };
 };
 
@@ -69,20 +70,22 @@ Player.prototype.update = function(x,y) {
 
 };
 
-function message() {
+function winMessage() {
     alert('You Won!!!!!');
-    player.reset();
-}
+};
+
+function lostMessage() {
+    alert('Sorry try again');
+
+};
+
 Player.prototype.render = function(x,y) {   // user added
 
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     if (this.y < 0) {
-      setTimeout(message, 1000)
-      //alert('You Won!');
-      //player.reset();
-      //setTimeout(player.reset, 3000);
-
-   }
+      setTimeout(winMessage, 1000);
+      setTimeout(player.reset(), 10000);
+    };
 };
 
 
@@ -118,9 +121,6 @@ Player.prototype.handleInput = function(key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-/*var buggy1 = new Enemy(0, 150);
-var buggy2 = new Enemy(0, 65);
-var buggy3 = new Enemy(0, 230); */
 var allEnemies = [];
 allEnemies[0] = new Enemy(0, 150);
 allEnemies[1] = new Enemy(0, 65);

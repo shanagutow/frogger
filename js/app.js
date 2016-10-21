@@ -64,11 +64,25 @@ Player.prototype.reset = function() {
 
 
 Player.prototype.update = function(x,y) {
-    this.x = this.x;
+   // this.x = this.x;
+   console.log(this.y);
+
 };
 
+function message() {
+    alert('You Won!!!!!');
+    player.reset();
+}
 Player.prototype.render = function(x,y) {   // user added
+
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    if (this.y < 0) {
+      setTimeout(message, 1000)
+      //alert('You Won!');
+      //player.reset();
+      //setTimeout(player.reset, 3000);
+
+   }
 };
 
 
@@ -89,6 +103,7 @@ Player.prototype.handleInput = function(key) {
                 if (this.y >= 50){
                   this.y = this.y - 83;
                 };
+
               break;
             case 'down' :
                 if (this.y <= 400){
@@ -103,10 +118,13 @@ Player.prototype.handleInput = function(key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var buggy1 = new Enemy(0, 150);
+/*var buggy1 = new Enemy(0, 150);
 var buggy2 = new Enemy(0, 65);
-var buggy3 = new Enemy(0, 230);
-var allEnemies = [buggy1, buggy2, buggy3];
+var buggy3 = new Enemy(0, 230); */
+var allEnemies = [];
+allEnemies[0] = new Enemy(0, 150);
+allEnemies[1] = new Enemy(0, 65);
+allEnemies[2] = new Enemy(0, 230);
 var player = new Player();
 
 

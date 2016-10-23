@@ -31,6 +31,8 @@ Enemy.prototype.update = function(dt, speed) {
     } else {
        this.x += (this.speed * dt);
     }
+
+    //Collision detection using a box
     enemyBox = {x: this.x, y: this.y};
     playerBox = {x: player.x, y: player.y};
     if ((enemyBox.x < (playerBox.x + 50)) && ((enemyBox.x + 75) > playerBox.x) && (enemyBox.y < (playerBox.y + 63)) && ((77 + enemyBox.y) > playerBox.y))
@@ -57,6 +59,7 @@ var Player = function() {
     this.y = 410;
 };
 
+//the loctions used when the game is reset
 Player.prototype.reset = function() {
   this.x = 200;
   this.y = 410;
@@ -82,6 +85,7 @@ function lostMessage() {
 Player.prototype.render = function(x,y) {   // user added
 
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    //checks if the player wins and sends a message and resets the game
     if (this.y < 0) {
       setTimeout(winMessage, 1000);
       setTimeout(player.reset(), 10000);
@@ -89,7 +93,8 @@ Player.prototype.render = function(x,y) {   // user added
 };
 
 
-
+//key movements
+//makes sure that the player doesn't move off the screen
 Player.prototype.handleInput = function(key) {
     switch(key){
             case 'left' :
@@ -114,7 +119,6 @@ Player.prototype.handleInput = function(key) {
                 };
               break;
         };
-    console.log("handleInput test");
 };
 
 // Now instantiate your objects.
